@@ -1,0 +1,97 @@
+# Multi-run manifest for 20260421_095550
+# 
+# Each job creates entries:
+#   [START] - Written when job starts, includes log file paths
+#   [COMPLETE] - Written when job finishes successfully
+#   [FAILED] - Written if job fails, includes exit code
+# 
+# Monitor running jobs using: tail -f <log_path> or cat <log_path>
+
+[START] Job 64275092 | DB: base_3_26 | Playlist: centiv_2050_minLocal10
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275092/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275092.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275092.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275160 | DB: base_3_26 | Playlist: centiv_2050_minLocal20
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275160/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275160.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275160.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275256 | DB: base_3_26 | Playlist: centiv_2050_minLocal20_noRES
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275256/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275256.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275256.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275264 | DB: base_3_26 | Playlist: centiv_2050_minLocal40_noRES
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275264/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275264.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275264.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275236 | DB: base_3_26 | Playlist: centiv_2050_minLocal40
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275236/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275236.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275236.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275229 | DB: base_3_26 | Playlist: centiv_2050_minLocal30
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275229/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275229.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275229.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275243 | DB: base_3_26 | Playlist: centiv_2050_minLocal10_noRES
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275243/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275243.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275243.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64275262 | DB: base_3_26 | Playlist: centiv_2050_minLocal30_noRES
+  App:   /cluster/scratch/adarudi/min_gen_local_all_1/run_64275262/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64275262.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64275262.log
+  Monitor: tail -f <path> or cat <path>
+
+[COMPLETE] Job 64275160 | DB: base_3_26 | Playlist: centiv_2050_minLocal20
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275160/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal20
+  Folder:  run_base_3_26_centiv_2050_minLocal20
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-57-09_run_base_3_26_centiv_2050_minlocal20
+
+[COMPLETE] Job 64275092 | DB: base_3_26 | Playlist: centiv_2050_minLocal10
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275092/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal10
+  Folder:  run_base_3_26_centiv_2050_minLocal10
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-57-09_run_base_3_26_centiv_2050_minlocal10
+
+[COMPLETE] Job 64275243 | DB: base_3_26 | Playlist: centiv_2050_minLocal10_noRES
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275243/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal10_noRES
+  Folder:  run_base_3_26_centiv_2050_minLocal10_noRES
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-58-21_run_base_3_26_centiv_2050_minlocal10_nores
+
+[COMPLETE] Job 64275236 | DB: base_3_26 | Playlist: centiv_2050_minLocal40
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275236/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal40
+  Folder:  run_base_3_26_centiv_2050_minLocal40
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-58-16_run_base_3_26_centiv_2050_minlocal40
+
+[COMPLETE] Job 64275256 | DB: base_3_26 | Playlist: centiv_2050_minLocal20_noRES
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275256/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal20_noRES
+  Folder:  run_base_3_26_centiv_2050_minLocal20_noRES
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-58-16_run_base_3_26_centiv_2050_minlocal20_nores
+
+[COMPLETE] Job 64275264 | DB: base_3_26 | Playlist: centiv_2050_minLocal40_noRES
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275264/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal40_noRES
+  Folder:  run_base_3_26_centiv_2050_minLocal40_noRES
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-58-16_run_base_3_26_centiv_2050_minlocal40_nores
+
+[COMPLETE] Job 64275229 | DB: base_3_26 | Playlist: centiv_2050_minLocal30
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275229/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal30
+  Folder:  run_base_3_26_centiv_2050_minLocal30
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-58-16_run_base_3_26_centiv_2050_minlocal30
+
+[COMPLETE] Job 64275262 | DB: base_3_26 | Playlist: centiv_2050_minLocal30_noRES
+  Results: /cluster/scratch/adarudi/min_gen_local_all_1/run_64275262/nexus-e-framework/Results/run_base_3_26_centiv_2050_minLocal30_noRES
+  Folder:  run_base_3_26_centiv_2050_minLocal30_noRES
+  Webviewer: https://nexus-e.org/results/2026-04-21t09-58-21_run_base_3_26_centiv_2050_minlocal30_nores
+

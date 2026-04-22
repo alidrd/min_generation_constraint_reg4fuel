@@ -1,0 +1,24 @@
+manifest: manifests/multiRun_20260421_162606.manifest
+
+runs_to_compare:
+  - centiv_2050_minLocal10
+  - centiv_2050_minLocal20
+  # - centiv_2050_minLocal30
+  # - centiv_2050_minLocal40
+  # - centiv_2050_minLocal10_noRES
+  # - centiv_2050_minLocal20_noRES
+  # - centiv_2050_minLocal30_noRES
+  # - centiv_2050_minLocal40_noRES
+
+active_plots:
+  - security_supply
+  - shadow_prices
+  - hydro_soc
+  - investment
+  - market_dispatch
+  - market_prices
+  - trade
+  - profits
+  - system_cost
+  - efficiency_security
+  - curtailment

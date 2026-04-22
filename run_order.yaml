@@ -1,0 +1,14 @@
+# Default ordering of runs across all manifests.
+# Format: "input_db|playlist_name"
+# Runs found in a manifest are sorted by their position here.
+# Runs not listed here are appended at the end in manifest order.
+
+order:
+  - "base_3_26_reg4fuel|centiv_2050_minLocal10"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal20"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal30"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal40"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal10_noRES"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal20_noRES"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal30_noRES"
+  - "base_3_26_reg4fuel|centiv_2050_minLocal40_noRES"

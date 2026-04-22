@@ -1,0 +1,86 @@
+# Multi-run manifest for 20260421_162606
+# 
+# Each job creates entries:
+#   [START] - Written when job starts, includes log file paths
+#   [COMPLETE] - Written when job finishes successfully
+#   [FAILED] - Written if job fails, includes exit code
+# 
+# Monitor running jobs using: tail -f <log_path> or cat <log_path>
+
+[START] Job 64322130 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal10_noRES
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322130/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322130.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322130.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322092 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal10
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322092/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322092.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322092.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322132 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal20_noRES
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322132/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322132.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322132.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322100 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal20
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322100/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322100.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322100.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322128 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal40
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322128/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322128.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322128.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322134 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal30_noRES
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322134/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322134.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322134.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322126 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal30
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322126/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322126.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322126.log
+  Monitor: tail -f <path> or cat <path>
+
+[START] Job 64322135 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal40_noRES
+  App:   /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322135/nexus-e-framework/nexus-e.log
+  Out:   /cluster/home/adarudi/Euler_logs/output_64322135.log
+  Err:   /cluster/home/adarudi/Euler_logs/error_64322135.log
+  Monitor: tail -f <path> or cat <path>
+
+[COMPLETE] Job 64322130 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal10_noRES
+  Results: /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322130/nexus-e-framework/Results/run_base_3_26_reg4fuel_centiv_2050_minLocal10_noRES
+  Folder:  run_base_3_26_reg4fuel_centiv_2050_minLocal10_noRES
+  Webviewer: https://nexus-e.org/results/2026-04-21t16-27-53_run_base_3_26_reg4fuel_centiv_2050_minlocal1
+
+[COMPLETE] Job 64322126 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal30
+  Results: /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322126/nexus-e-framework/Results/run_base_3_26_reg4fuel_centiv_2050_minLocal30
+  Folder:  run_base_3_26_reg4fuel_centiv_2050_minLocal30
+  Webviewer: https://nexus-e.org/results/2026-04-21t16-27-48_run_base_3_26_reg4fuel_centiv_2050_minlocal3
+
+[COMPLETE] Job 64322132 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal20_noRES
+  Results: /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322132/nexus-e-framework/Results/run_base_3_26_reg4fuel_centiv_2050_minLocal20_noRES
+  Folder:  run_base_3_26_reg4fuel_centiv_2050_minLocal20_noRES
+  Webviewer: https://nexus-e.org/results/2026-04-21t16-27-47_run_base_3_26_reg4fuel_centiv_2050_minlocal2
+
+[COMPLETE] Job 64322092 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal10
+  Results: /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322092/nexus-e-framework/Results/run_base_3_26_reg4fuel_centiv_2050_minLocal10
+  Folder:  run_base_3_26_reg4fuel_centiv_2050_minLocal10
+  Webviewer: https://nexus-e.org/results/2026-04-21t16-27-53_run_base_3_26_reg4fuel_centiv_2050_minlocal1
+
+[COMPLETE] Job 64322100 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal20
+  Results: /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322100/nexus-e-framework/Results/run_base_3_26_reg4fuel_centiv_2050_minLocal20
+  Folder:  run_base_3_26_reg4fuel_centiv_2050_minLocal20
+  Webviewer: https://nexus-e.org/results/2026-04-21t16-27-52_run_base_3_26_reg4fuel_centiv_2050_minlocal2
+
+[COMPLETE] Job 64322128 | DB: base_3_26_reg4fuel | Playlist: centiv_2050_minLocal40
+  Results: /cluster/scratch/adarudi/gen_local_2_allDays_Oil/run_64322128/nexus-e-framework/Results/run_base_3_26_reg4fuel_centiv_2050_minLocal40
+  Folder:  run_base_3_26_reg4fuel_centiv_2050_minLocal40
+  Webviewer: https://nexus-e.org/results/2026-04-21t16-27-49_run_base_3_26_reg4fuel_centiv_2050_minlocal4
