@@ -1,0 +1,8 @@
+streamlit>=1.50.0
+plotly>=6.2.0
+pandas>=2.3.1
+pyarrow>=21.0.0
+paramiko>=4.0.0
+pymysql>=1.1.2
+openpyxl>=3.1.5
+pyyaml>=6.0.2

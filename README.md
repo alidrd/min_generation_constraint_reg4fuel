@@ -46,7 +46,7 @@ src/
 ## Setup
 
 ```bash
-pip install streamlit plotly pandas pyarrow paramiko pymysql openpyxl pyyaml
+pip install -r requirements.txt
 ```
 
 ## Running the pipeline

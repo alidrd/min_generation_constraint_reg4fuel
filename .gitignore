@@ -1,6 +1,7 @@
 # Credentials — never commit
 C:/DB/
 *.txt
+!requirements.txt
 .env
 *.env
 
