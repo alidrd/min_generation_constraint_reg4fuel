@@ -38,6 +38,7 @@ src/
   cache.py                    Read/write parquet and Euler file cache
   euler_aggregate_reservoirs.py  Aggregation script uploaded and run on Euler
   plots/
+    security_supply.py        Plot 1 — Security of Supply (RDEM)
     market_prices.py          Plot 6 — electricity market prices
     hydro_soc.py              Plot 3 — reservoir state of charge
     curtailment.py            Plot 11 — curtailment & spillage
@@ -92,6 +93,59 @@ order:
   - "base_3_26_reg4fuel|centiv_2050_minLocal10"
   - "base_3_26_reg4fuel|centiv_2050_minLocal20"
 ```
+
+## Security of Supply — RDEM definition
+
+The **Security of Supply** plot (`security_supply`) computes a rolling
+**Remaining Domestic Energy Margin (RDEM)** for each hour *t* in the winter
+period (October–March).
+
+### Equation
+
+```
+RDEM(t) = remaining_supply(t) / remaining_demand(t)
+```
+
+where the **remaining supply** has three components, following the structure of
+the `set_min_local_generation` constraint in the nexus-e model:
+
+```
+remaining_supply(t) = SOC(t)
+                    + Σ_{h=t}^{T_end}  [ PV(h) + Wind(h) + RoR(h) ]
+                    + P_conv  ×  (T_end − t)
+```
+
+| Term | Description | Source |
+|------|-------------|--------|
+| **SOC(t)** | Total energy stored in Swiss hydro reservoirs (dam + pump + daily-pump) at hour *t*, in GWh | Euler hourly CSV files (MWh ÷ 1000) |
+| **Σ RES(h)** | Remaining renewable generation potential from *t* to end of winter: PV (all types), Wind (on/offshore), Run-of-River | Actual hourly dispatch from output DB (proxy for potential) |
+| **P_conv × (T_end − t)** | Conventional generation potential: installed capacity (GW) × hours remaining | `national_capacity_gw_ch` output table; includes Gas, Nuclear, Waste, Coal, Geothermal, etc. |
+
+**Remaining demand:**
+
+```
+remaining_demand(t) = Σ_{h=t}^{T_end}  Load_Total(h)
+```
+
+from the `national_generation_hourly_gwh_c_ch_2050` output table
+(`Load (Total)` column, GWh).
+
+### Interpretation
+
+- RDEM > 1 → Switzerland has surplus domestic energy potential for the rest of winter.
+- RDEM < 1 → domestic potential is insufficient; imports required to cover demand.
+- The **worst hour** (minimum RDEM) is marked with a star on the ratio plot.
+- Higher minimum local generation targets (`minLocalXX`) raise the constraint
+  floor on domestic production; this is expected to raise RDEM, particularly
+  by increasing conventional (thermal/storage) dispatch during winter.
+
+### Simplifications
+
+- Future hydro inflows from *t* to end-of-winter are not included. The SOC already
+  reflects inflows up to *t*; adding expected future inflows would require water-profile
+  data from the input DB and is left as a future improvement.
+- RES remaining uses actual dispatch, not curtailment-corrected potential. In hours
+  where RES is curtailed, actual < potential, so RDEM is slightly underestimated.
 
 ## Notes
 

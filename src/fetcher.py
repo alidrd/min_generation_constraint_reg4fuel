@@ -93,6 +93,8 @@ _AGGREGATIONS = [
 def run_euler_aggregations(run_name: str, euler_path: str, force: bool = False) -> list[str]:
     """Run aggregation scripts on Euler and download resulting CSVs into cache."""
     fetched = []
+
+    # Use separate connections for SFTP and exec to avoid channel conflicts
     with get_client() as client:
         sftp = client.open_sftp()
 
@@ -102,36 +104,40 @@ def run_euler_aggregations(run_name: str, euler_path: str, force: bool = False) 
             sftp.close()
             return []
 
-        # Upload aggregation script (always refresh to pick up any local edits)
+        # Upload aggregation script
         sftp.put(str(_SCRIPT_LOCAL), _SCRIPT_REMOTE)
 
         for xlsx_name, out_subdir in _AGGREGATIONS:
             xlsx_remote = f"{resolved}/{xlsx_name}"
             out_remote  = f"/cluster/home/adarudi/{out_subdir}/{run_name}"
 
-            # Check if all output CSVs are already cached
-            _, stdout, _ = client.exec_command(f"ls {out_remote}/*.csv 2>/dev/null")
-            remote_csvs = [Path(p.strip()).name for p in stdout.read().decode().splitlines() if p.strip()]
-            if not force and remote_csvs and all(is_euler_file_cached(run_name, f) for f in remote_csvs):
-                for f in remote_csvs:
+            # Check via SFTP whether output already exists and is cached
+            try:
+                existing = [f for f in sftp.listdir(out_remote) if f.endswith(".csv")]
+            except FileNotFoundError:
+                existing = []
+
+            if not force and existing and all(is_euler_file_cached(run_name, f) for f in existing):
+                for f in existing:
                     print(f"  [skip] euler/{run_name}/{f} (cached)")
                 continue
 
+            # Run aggregation via exec on a fresh channel
             print(f"  [aggregate] {xlsx_name} ...", flush=True)
             _, stdout, stderr = client.exec_command(
-                f"python3 {_SCRIPT_REMOTE} \"{xlsx_remote}\" \"{out_remote}\""
+                f'python3 {_SCRIPT_REMOTE} "{xlsx_remote}" "{out_remote}"'
             )
+            stdout.channel.recv_exit_status()  # wait for completion
             out = stdout.read().decode().strip()
             err = stderr.read().decode().strip()
-            if out:
-                for line in out.splitlines():
-                    print(f"    {line}")
+            for line in out.splitlines():
+                print(f"    {line}")
 
-            # Download produced CSVs
+            # List output via SFTP (no exec_command)
             try:
                 csv_files = [f for f in sftp.listdir(out_remote) if f.endswith(".csv")]
             except FileNotFoundError:
-                print(f"  [warn] Aggregation output dir not found: {out_remote}")
+                print(f"  [warn] Output dir not found: {out_remote}")
                 if err:
                     print(f"  STDERR: {err}")
                 continue
@@ -171,16 +177,22 @@ def fetch_euler_files(run_name: str, euler_path: str, force: bool = False) -> li
             sftp.close()
             return []
 
+        MAX_FILE_MB = 5
         for entry in entries:
             filename = entry.filename
             if not any(filename.endswith(ext) for ext in (".csv", ".xlsx", ".xls")):
+                continue
+            size_mb = entry.st_size / 1_048_576
+            if size_mb > MAX_FILE_MB:
+                print(f"  [skip] euler/{run_name}/{filename} ({size_mb:.1f} MB — too large, use aggregation)")
                 continue
             if not force and is_euler_file_cached(run_name, filename):
                 print(f"  [skip] euler/{run_name}/{filename} (cached)")
                 continue
             print(f"  [fetch] euler/{run_name}/{filename} ...", end=" ", flush=True)
-            with sftp.open(f"{resolved}/{filename}") as f:
-                content = f.read()
+            buf = io.BytesIO()
+            sftp.getfo(f"{resolved}/{filename}", buf)
+            content = buf.getvalue()
             save_euler_file(run_name, filename, content)
             print(f"{len(content) // 1024} KB")
             fetched.append(filename)

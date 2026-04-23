@@ -9,7 +9,9 @@ Usage:
 """
 import argparse
 import sys
+import socket
 from pathlib import Path
+import paramiko
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
@@ -63,8 +65,13 @@ def main():
     if not args.skip_euler:
         for run in runs:
             print(f"\n[Euler] {run.name}  ->  {run.euler_path}")
-            fetch_euler_files(run.name, run.euler_path, force=args.force)
-            run_euler_aggregations(run.name, run.euler_path, force=args.force)
+            try:
+                fetch_euler_files(run.name, run.euler_path, force=args.force)
+                run_euler_aggregations(run.name, run.euler_path, force=args.force)
+            except (TimeoutError, ConnectionError, OSError,
+                    socket.error, paramiko.SSHException) as e:
+                print(f"  [warn] Euler connection failed for {run.name}: {e}")
+                print(f"  [warn] Skipping Euler step — re-run pipeline when connectivity is restored.")
 
     print("\nDone.")
 

@@ -72,8 +72,22 @@ elif selected_plot == "curtailment":
     st.plotly_chart(fig_hourly, use_container_width=True)
 
 elif selected_plot == "security_supply":
+    from plots.security_supply import plot_security_supply
     st.header(PLOT_LABELS["security_supply"])
-    st.info("Coming soon.")
+    result = plot_security_supply(selected_runs)
+    if result is None:
+        st.warning(
+            "No generation data found in cache — run the pipeline to download output DBs. "
+            f"Expected table: `national_generation_hourly_gwh_c_ch_2050`"
+        )
+    else:
+        fig_rdem, fig_comp, fig_worst = result
+        st.subheader("Rolling RDEM over winter (Nov–Mar)")
+        st.plotly_chart(fig_rdem, use_container_width=True)
+        st.subheader("Worst-hour RDEM per scenario")
+        st.plotly_chart(fig_worst, use_container_width=True)
+        st.subheader("Hourly supply mix vs demand — winter")
+        st.plotly_chart(fig_comp, use_container_width=True)
 
 elif selected_plot == "shadow_prices":
     st.header(PLOT_LABELS["shadow_prices"])
